@@ -11,6 +11,15 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.xhtml</welcome-file>
   </welcome-file-list>
+  <resource-ref>
+
+	<res-ref-name>jdbc/dbcp</res-ref-name>
+
+	<res-type>javax.sql.DataSource</res-type>
+
+	<res-auth>Container</res-auth>
+
+  </resource-ref>
   
   <!-- 서비스를 운영할 때 에러메시지 말고 준비된 페이지를 보여줄 때. -->
 <!--   <error-page>
