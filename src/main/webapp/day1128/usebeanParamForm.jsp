@@ -110,6 +110,23 @@
 								<td class="input"><input type="date" name="birth"
 									class="inputBox" value="2025-11-06" /></td>
 							</tr>
+							<tr>
+								<td class="title"><label><span class="star">*</span>이름</label></td>
+								<td class="input"><input type="text" name="name"
+									class="inputBox" value="짐캐리" /></td>
+							</tr>
+							<tr>
+								<td class="title"><label><span class="star">*</span>이메일</label></td>
+								<td class="input"><input type="text" name="email"
+									class="inputBox" value="test"/>@
+									<select name="domain">
+										<option value="google.com">google.com</option>
+										<option value="naver.com">naver.com</option>
+										<option value="daum.net">daum.net</option>
+										<option value="steam.com">steam.com</option>
+									</select>	
+								</td>
+							</tr>
 
 							<tr>
 								<td class="title"><label><span class="star">*</span>소재지</label></td>

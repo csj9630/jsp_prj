@@ -3,12 +3,12 @@ package day1128;
 import java.util.Arrays;
 
 public class ParamDTO {
-	private String id,pass,birth,loc,intro,code,ip,secChUaPlatform,userAgent;
+	private String id,pass,birth,loc,intro,code,name,email,ip,secChUaPlatform,userAgent;
 	private String[] language;
 	public ParamDTO() {
 	}
-	public ParamDTO(String id, String pass, String birth, String loc, String intro, String code, String ip,
-			String secChUaPlatform, String userAgent, String[] language) {
+	public ParamDTO(String id, String pass, String birth, String loc, String intro, String code, String name,
+			String email, String ip, String secChUaPlatform, String userAgent, String[] language) {
 		super();
 		this.id = id;
 		this.pass = pass;
@@ -16,10 +16,18 @@ public class ParamDTO {
 		this.loc = loc;
 		this.intro = intro;
 		this.code = code;
+		this.name = name;
+		this.email = email;
 		this.ip = ip;
 		this.secChUaPlatform = secChUaPlatform;
 		this.userAgent = userAgent;
 		this.language = language;
+	}
+	@Override
+	public String toString() {
+		return "ParamDTO [id=" + id + ", pass=" + pass + ", birth=" + birth + ", loc=" + loc + ", intro=" + intro
+				+ ", code=" + code + ", name=" + name + ", email=" + email + ", ip=" + ip + ", secChUaPlatform="
+				+ secChUaPlatform + ", userAgent=" + userAgent + ", language=" + Arrays.toString(language) + "]";
 	}
 	public String getId() {
 		return id;
@@ -57,6 +65,18 @@ public class ParamDTO {
 	public void setCode(String code) {
 		this.code = code;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getIp() {
 		return ip;
 	}
@@ -81,12 +101,6 @@ public class ParamDTO {
 	public void setLanguage(String[] language) {
 		this.language = language;
 	}
-	@Override
-	public String toString() {
-		return "ParamDTO [id=" + id + ", pass=" + pass + ", birth=" + birth + ", loc=" + loc + ", intro=" + intro
-				+ ", code=" + code + ", ip=" + ip + ", secChUaPlatform=" + secChUaPlatform + ", userAgent=" + userAgent
-				+ ", language=" + Arrays.toString(language) + "]";
-	}
-		
 	
-}
+	
+}//class

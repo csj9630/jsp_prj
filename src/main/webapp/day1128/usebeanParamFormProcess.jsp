@@ -71,6 +71,19 @@ $(function(){
 				%>
 				
 				<%
+				//email은 mail과 domain으로 분리되어 있고 합쳐야 한다.
+				//back-end : request 객체 부르고 합치기
+				//front:js 잘 써보기
+				pDTO.setEmail(request.getParameter("email")+"@"+request.getParameter("domain"));
+				pDTO.setName(request.getParameter("name"));
+				/*
+				**********************************************************************
+				12/04
+				WebMemberService로 변경하기
+				**********************************************************************
+				*/
+				
+				
 				MemberService ms=new MemberService();
 				ms.joinMember(pDTO); //값을 받을 DTO를 Service객체에 전달할 수 있다.
 				%>
@@ -82,6 +95,8 @@ $(function(){
 				<br>
 				아이디 : <input type="text" value="${ param.id }"/><br>
 				비밀번호 : ${ param.pass }<br>
+				이름 : ${ param.name }<br>
+				이메일 : ${ param.email }@${param.domain }<br>
 				생년월일 : ${ param.birth }<br>
 				거주지 : ${ param.loc }<br>
 				소개 : ${ param.intro }<br>
