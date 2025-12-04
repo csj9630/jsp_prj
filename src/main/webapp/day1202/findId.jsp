@@ -81,7 +81,7 @@ function sendId( id ){
 		<div id="searchResult">
 		<%
 			WebMemberService wmService = WebMemberService.getInstance();
-			boolean flagId = wmService.searchId(request.getParameter("id"));	
+			boolean flagId = wmService.searchId(request.getParameter("id"));
 			pageContext.setAttribute("flagId", flagId);//EL로 쓰기 위해 scope객체에 넣기
 		%>	
 		<c:set var="resultCss" value="fail"/>
@@ -95,7 +95,11 @@ function sendId( id ){
 			<div>	
 				입력하신 <strong>${param.id }</strong>는 
 				<span class="${resultCss}"><c:out value="${resultMsg }" /></span>
-				<a href ="javascript : sendId('${param.id }')">전송 </a>
+				
+				<c:if test="${flagId }">
+					<a href ="javascript:sendId('${param.id }')">사용 </a>
+					<!--          ㄴ 여어어어기 띄어쓰기 들어가면 안된다이 -->
+				</c:if>
 			</div>
 		</div>
 	</c:if>
