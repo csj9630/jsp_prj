@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="../fragments/siteProperty.jsp"%>
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
 <head>
@@ -10,11 +11,35 @@
 <title>로그인</title>
 <link rel="shortcut icon" href="http://192.168.10.82/jsp_prj/common/images/favicon.ico">
 
+<!-- jQuery CDN 시작 -->
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 <script src="http://192.168.10.82/jsp_prj/common/js/color-modes.js"></script>
 <!-- bootstrap CDN 시작 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script type="text/javascript">
 
+$(function () {
+	//alert("test");
+	//아이디비번 검사
+	$("#btn").click(function () {
+		if($("#id").val() == ""){
+			alert("아이디는 필수 입력!");
+			return;
+		}//end if
+		if($("#password").val() == ""){
+			alert("비밀번호도 필수 입력!");
+			return;
+		}//end if
+		$("#loginFrm").submit();
+	})
+});//ready
+
+
+
+
+</script>
 
 <link href="http://192.168.10.82/jsp_prj/common/css/sign-in.css" rel="stylesheet">
 <style>
@@ -103,23 +128,24 @@
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
 
    <main class="form-signin w-100 m-auto">
-      <form>
+      <form id="loginFrm" name="loginFrm" action="${commonURL}/login/loginFrmProcess.jsp" method="post">
          <img class="mb-4" src="http://192.168.10.82/jsp_prj/common/images/sist.png"
             alt="" >
          <h1 class="h3 mb-3 fw-normal">로그인</h1>
          <div class="form-floating">
-            <input type="email" class="form-control" id="floatingInput"
-               placeholder="name@example.com"> <label for="floatingInput">Email
-               address</label>
+            <input type="text" class="form-control" id="id"
+            value="asdf"
+              name="id"  placeholder="아이디"> 
          </div>
          <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword"
-               placeholder="Password"> <label for="floatingPassword">Password</label>
+            <input type="password" class="form-control" id="password" name="password"
+            value="1234"
+               placeholder="비밀번호">
          </div>
       
-         <button class="btn btn-primary w-100 py-2" type="submit">로그인</button>
+      	<!--버튼 비활성화   -->
+         <button class="btn btn-primary w-100 py-2" onclick="return false;" type="submit" id="btn">로그인</button>
          <div>
-         
          	<a href="http://localhost/jsp_prj/day1128/usebeanParamForm.jsp">회원가입</a>
          </div>
       </form>
