@@ -131,5 +131,10 @@ public class WebMemberDAO {
 			db.dbClose(null, pstmt, con);
 		}//end finnaly
 	}// insertMember
+	
+//	public static void main(String[] args) {
+//		WebMemberDAO wDAO = WebMemberDAO.getInstance();
+//		System.out.println(wDAO);
+//	}
 
 }// class
