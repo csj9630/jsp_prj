@@ -27,8 +27,8 @@
 	if(pDTO != null){//로그인 성공
 		//세션에 값 할당
 		session.setAttribute("userId", pDTO.getId());
-		session.setAttribute("userId", pDTO.getName());
-		session.setAttribute("userId", pDTO.getBirth());
+		session.setAttribute("userName", pDTO.getName());
+		session.setAttribute("userBirth", pDTO.getBirth());
 		//접속 history 남기고
 		//페이지를 이동 
 		
