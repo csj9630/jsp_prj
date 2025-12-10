@@ -193,6 +193,7 @@ function checkLogin() {
 					rDTO.setTotalPage(totalPage);
 					//7.pagination
 					String pagination = bs.pagination(rDTO);
+					String pagination2 = bs.pagination2(rDTO);
 
 					pageContext.setAttribute("totalCount", totalCount);
 					pageContext.setAttribute("pageScale", pageScale);
@@ -201,6 +202,7 @@ function checkLogin() {
 					pageContext.setAttribute("startNum", startNum);
 					pageContext.setAttribute("endNum", endNum);
 					pageContext.setAttribute("pagination", pagination);
+					pageContext.setAttribute("pagination2", pagination2);
 
 					pageContext.setAttribute("boardList", boardList);
 
@@ -284,17 +286,22 @@ function checkLogin() {
 
 
 
-					<!--페이지네이션1 -->
+					<!--페이지네이션0 -->
 					<div id="pagination" >
 						<!--링크에 현재 페이지 번호, 검색한 필드 및 키워드 들어가게 하기 -->
 						<c:forEach var="tPage" begin="1" end="${totalPage }" step="1">
 							<a class="" href="boardList.jsp?currentPage=${tPage}&field=${param.field}&keyword=${param.keyword}">[ ${tPage } ]</a>
 						</c:forEach>
 					</div>
+					<!--페이지네이션1 -->
+					<div id="pagination" style="text-align: center;">
+						<!--체크 필요##########################################  -->
+						<c:out value="${pagination}" escapeXml="false"></c:out>
+					</div>
 					<!--페이지네이션2 -->
 					<div id="pagination" style="text-align: center;">
-					<!--체크 필요##########################################  -->
-						<c:out value="${pagination}" escapeXml="false"></c:out>
+						<h6>페이지네이션2</h6>
+						<c:out value="${pagination2}" escapeXml="false"></c:out>
 					</div>
 				</div>
 
