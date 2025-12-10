@@ -3,7 +3,6 @@
     
 <%@ include file="../fragments/siteProperty.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="../fragments/loginChk3.jsp"%>
 
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
@@ -35,7 +34,6 @@
 
 $(function () {
 	$('#content').summernote({
-	    placeholder: '힐 사용료를 걷겠어요',
 	    tabsize: 2,
 	    width:500,
 	    height: 300,
@@ -113,7 +111,7 @@ $(function(){
 			<div class="row featurette">
 				<div class="col-md-7">
 				<!-- 여기서부터 작성 시작-->
-				<h2>아무말 대잔치 글쓰기</h2>
+				<h2>아무말 대잔치 글읽기</h2>
 				<form action="boardWriteFrmProcess.jsp" method="post" name="frm" id="frm">
 				<table>
 					<tr>
@@ -126,7 +124,11 @@ $(function(){
 					</tr>
 					<tr>
 						<td> ID/IP </td>
-						<td><c:out value="${sessionScope.userId}"/> <%=request.getRemoteAddr() %></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td> 작성일 </td>
+						<td></td>
 					</tr>
 
 					<tr>
