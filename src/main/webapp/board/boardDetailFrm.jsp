@@ -129,7 +129,7 @@ $(function () {
 }
 
 #content {
-	background-color: #fff;
+	background-color: #FF0000;
 }
 </style>
 
@@ -144,25 +144,34 @@ if( ${ sessionScope.userId == null } ){
 }//end if
 
 $(function(){
-	$("#btnWrite").click(function(){
-		//제목과 내용에 값이 있는지 유효성 검증.
-		console.log( $("#content").val() )
+	$("#btnModify").click(function(){
+		//수정 확인
+		if(confirm("정말 수정하시겠습니까?")){
 		
-		if($("#title").val()==""){
-			alert("제목은 필수입력");
-			$("#title").focus();
-			return;
-		}//end if
-		if( $("#content").val() == "" || $("#content").val() == "<p></p>"){
-			alert("내용은 필수 입력 입니다.");
-			return;
-		}//end if
-
-		$("#frm").submit();
-		
-		
-		});//click
-});//ready
+			//내용에 값이 있는지 유효성 검증.
+			if( $("#content").val() == "" || $("#content").val() == "<p></p>"){
+				alert("내용은 필수 입력 입니다.");
+				return;
+			}//end if
+	
+			//jquery 노드에서 자바스크립트 객체에 접근할 때는 배열로 접근해야 한다.
+			$("#frm")[0].action="modifyBoardProcess.jsp";
+			//alert($("#frm")[0].action);
+			
+			$("#frm").submit();
+		}//end if confirm
+	});//click
+	
+	$("#btnDelete").click(function(){
+		//수정 확인
+		if(confirm("정말 삭제하시겠습니까?")){
+			//jquery 노드에서 자바스크립트 객체에 접근할 때는 배열로 접근해야 한다.
+			$("#frm")[0].action="removeBoardProcess.jsp";
+			//alert($("#frm")[0].action);
+			$("#frm").submit();
+		}//end if confirm
+	});//click
+});//DOM ready
 </script>
 
 
@@ -189,8 +198,8 @@ $(function(){
 							<tr>
 								<td>내용</td>
 								<td><textarea name="content" id="content">
-							<c:out value="${bDTO.content}" />
-						</textarea></td>
+									<c:out value="${bDTO.content}" />
+								</textarea></td>
 							</tr>
 							<tr>
 								<td>ID/IP</td>
@@ -209,8 +218,9 @@ $(function(){
 							<tr>
 								<td colspan="2" style="text-align: center;"><c:if
 										test="${ sessionScope.userId eq bDTO.id}">
-										<!-- 							<button onclick="return false" class="btn btn-success" id="btnModify">글수정</button>
-							<button onclick="return false" class="btn btn-success" id="btnDelete">글삭제</button> -->
+											<input type="hidden" name="num" value="${param.num}"/>
+											<button onclick="return false" class="btn btn-success" id="btnModify">글수정</button>
+											<button onclick="return false" class="btn btn-success" id="btnDelete">글삭제</button>
 									</c:if> <a href="boardList.jsp?currentPage=${param.currentPage }"
 									class="btn btn-info">리스트</a></td>
 							</tr>

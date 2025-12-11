@@ -39,7 +39,7 @@ public class WebMemberLoginDAO {
 			con=dbCon.getConn();
 		//4.쿼리문 생성객체 얻기
 			String selectMemberData=
-			"select name,birth from web_member where id=? and password=?";
+			"select name,birth,profile from web_member where id=? and password=?";
 			pstmt=con.prepareStatement(selectMemberData);
 		//5.바인드 변수에 값설정
 			pstmt.setString(1, lDTO.getId());
@@ -52,6 +52,7 @@ public class WebMemberLoginDAO {
 				pDTO.setId(lDTO.getId());
 				pDTO.setName( rs.getString("name"));//암호화 => 추후 복호화
 				pDTO.setBirth(rs.getString("birth"));
+				pDTO.setProfile(rs.getString("profile"));
 			}//end if
 		}finally {
 		//7.연결 끊기

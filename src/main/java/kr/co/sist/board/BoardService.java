@@ -218,7 +218,7 @@ public class BoardService {
 		return pagination.toString();
 	}//pagination
 	
-	public String pagination2( RangeDTO rDTO ) {
+	public String pagination2( RangeDTO rDTO, String justify ) {
 	      StringBuilder pagination=new StringBuilder();
 	      //1. 한 화면에 보여줄 pagination의 수.
 	      int pageNumber=3;
@@ -289,15 +289,20 @@ public class BoardService {
 	         nextMark.append("'>Next</a></li>");
 	         
 	      }//end if
+	      
+	      if(!("center".equals(justify) || "left".equals(justify))) {
+	         justify="left";
+	      }
 	      pagination.append("<nav aria-label='...'>")
-	      .append("  <ul class='pagination'>");
+	      .append("  <ul class='pagination d-flex justify-content-")
+	      .append(justify)
+	      .append("'>");
 	      pagination.append(prevMark).append(pageLink).append(nextMark);
 	      pagination.append("</ul>")
 	      .append("  </nav>");
 	      
 	      return pagination.toString();
 	   }//pagination
-	
 //----------------------DB Part-------------------------------------------------------------
 
 	/**
@@ -347,6 +352,38 @@ public class BoardService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} // end catch
+	}// modifyBoardCnt
+	
+	/**
+	 * 게시글 수정
+	 * @param bDTO
+	 * @return
+	 */
+	public boolean modifyBoard(BoardDTO bDTO) {
+		boolean flag =false;
+		BoardDAO bDAO = BoardDAO.getInstance();
+		try {
+			flag = bDAO.updateBoard(bDTO)==1;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} // end catch
+		return flag;
+	}// modifyBoardCnt
+	
+	/**
+	 * 게시글 삭제
+	 * @param bDTO
+	 * @return
+	 */
+	public boolean removeBoard(BoardDTO bDTO) {
+		boolean flag =false;
+		BoardDAO bDAO = BoardDAO.getInstance();
+		try {
+			flag = bDAO.deleteBoard(bDTO)==1;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} // end catch
+		return flag;
 	}// modifyBoardCnt
 
 }// class

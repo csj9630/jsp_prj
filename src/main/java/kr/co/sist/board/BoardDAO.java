@@ -294,13 +294,101 @@ public class BoardDAO {
 			
 			pstmt.executeUpdate();
 			
-			
-			
-			
 		}finally {
 //			7. 연결 끊기
 			dbCon.dbClose(null, pstmt, con);
 		}
 	}// updateBoardCnt
+	
+	
+	
+	public int updateBoard(BoardDTO bDTO) throws SQLException {
+		int cnt=0;
+		DbConn dbCon = DbConn.getInstance("jdbc/dbcp");
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			// 1.JNDI 사용객체 생성
+			// 2.DataSource 얻기
+			// 3.DataSource에서 Connection 얻기
+			con = dbCon.getConn();
+
+			// 4.쿼리문 생성객체 얻기
+			StringBuilder updateBoard = new StringBuilder();
+			
+			updateBoard
+			.append("  update board   ")
+//			.append("  set content=?, title=?  ")
+			.append("  set content=?, ip=?  ")
+			.append("  where num=? and id=?  ");
+			pstmt = con.prepareStatement(updateBoard.toString());
+
+			// 5.바인드 변수 값 설정
+			pstmt.setString(1, bDTO.getContent());
+//			pstmt.setString(2, bDTO.getTitle());
+			pstmt.setString(2, bDTO.getIp());
+			pstmt.setInt(3, bDTO.getNum());
+			pstmt.setString(4, bDTO.getId());
+
+			// 6.쿼리문 수행 후 결과 얻기
+			cnt = pstmt.executeUpdate();
+
+		} finally {
+			// 7.연결 끊기
+			dbCon.dbClose(null, pstmt, con);
+
+		} // end finally
+		
+		return cnt;
+	}// insertBoard
+	
+	
+	/**
+	 * 게시글 삭제
+	 * @param bDTO
+	 * @return
+	 * @throws SQLException
+	 */
+	public int deleteBoard(BoardDTO bDTO) throws SQLException {
+		int cnt=0;
+		DbConn dbCon = DbConn.getInstance("jdbc/dbcp");
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			// 1.JNDI 사용객체 생성
+			// 2.DataSource 얻기
+			// 3.DataSource에서 Connection 얻기
+			con = dbCon.getConn();
+			
+			// 4.쿼리문 생성객체 얻기
+			StringBuilder deleteBoard = new StringBuilder();
+			
+			deleteBoard
+			.append("  delete from board   ")
+			.append("  where num=? and id=? ");
+			pstmt = con.prepareStatement(deleteBoard.toString());
+			System.out.println(deleteBoard);
+			// 5.바인드 변수 값 설정
+			pstmt.setInt(1, bDTO.getNum());
+			pstmt.setString(2, bDTO.getId());
+			
+			// 6.쿼리문 수행 후 결과 얻기
+			cnt=pstmt.executeUpdate();
+			
+		} finally {
+			// 7.연결 끊기
+			dbCon.dbClose(null, pstmt, con);
+			
+		} // end finally
+		
+		System.out.println("dao결과 : "+cnt);
+		return cnt;
+	}// insertBoard
+
+
 
 }// class

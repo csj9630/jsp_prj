@@ -3,31 +3,9 @@ package day1128;
 import java.util.Arrays;
 
 public class ParamDTO {
-	private String id,pass,birth,loc,intro,code,name,email,ip,secChUaPlatform,userAgent;
+	private String id,pass,birth,loc,intro,code,name,email,ip,secChUaPlatform,userAgent, profile;
 	private String[] language;
 	public ParamDTO() {
-	}
-	public ParamDTO(String id, String pass, String birth, String loc, String intro, String code, String name,
-			String email, String ip, String secChUaPlatform, String userAgent, String[] language) {
-		super();
-		this.id = id;
-		this.pass = pass;
-		this.birth = birth;
-		this.loc = loc;
-		this.intro = intro;
-		this.code = code;
-		this.name = name;
-		this.email = email;
-		this.ip = ip;
-		this.secChUaPlatform = secChUaPlatform;
-		this.userAgent = userAgent;
-		this.language = language;
-	}
-	@Override
-	public String toString() {
-		return "ParamDTO [id=" + id + ", pass=" + pass + ", birth=" + birth + ", loc=" + loc + ", intro=" + intro
-				+ ", code=" + code + ", name=" + name + ", email=" + email + ", ip=" + ip + ", secChUaPlatform="
-				+ secChUaPlatform + ", userAgent=" + userAgent + ", language=" + Arrays.toString(language) + "]";
 	}
 	public String getId() {
 		return id;
@@ -95,12 +73,18 @@ public class ParamDTO {
 	public void setUserAgent(String userAgent) {
 		this.userAgent = userAgent;
 	}
+	public String getProfile() {
+		return profile;
+	}
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
 	public String[] getLanguage() {
 		return language;
 	}
 	public void setLanguage(String[] language) {
 		this.language = language;
 	}
-	
+		
 	
 }//class

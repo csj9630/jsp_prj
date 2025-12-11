@@ -191,9 +191,10 @@ function checkLogin() {
 
 					rDTO.setUrl("boardList.jsp");
 					rDTO.setTotalPage(totalPage);
-					//7.pagination
+					
+					//7.pagination 페이지네이션 로드
 					String pagination = bs.pagination(rDTO);
-					String pagination2 = bs.pagination2(rDTO);
+					String pagination2=bs.pagination2(rDTO,"center");
 
 					pageContext.setAttribute("totalCount", totalCount);
 					pageContext.setAttribute("pageScale", pageScale);
@@ -225,7 +226,7 @@ function checkLogin() {
 					<input type="button" value="글쓰기" class="btn btn-success"
 						id="btnWrite" />
 
-					<div id="boardList" style="height: 500px">
+					<div id="boardList" style="min-height: 500px">
 						<table class="table table-hover">
 							<thead>
 								<tr>
@@ -300,7 +301,6 @@ function checkLogin() {
 					</div>
 					<!--페이지네이션2 -->
 					<div id="pagination" style="text-align: center;">
-						<h6>페이지네이션2</h6>
 						<c:out value="${pagination2}" escapeXml="false"></c:out>
 					</div>
 				</div>

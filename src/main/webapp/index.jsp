@@ -61,8 +61,18 @@ $(function(){
 					<h3>사용자에게 제공할 컨텐츠...</h3>
 					<c:choose>
 						<c:when test="${not empty sessionScope.userId }">
-							<c:out value="${userId }"/>(<c:out value="${userName}"/>)
-							님 안녕하세요? <a href="${commonURL}/login/loginFrm.jsp">로그아웃</a>
+							<img id="preview" alt="이미지 미리보기" src="${commonURL}/upload/${sessionScope.userProfile}"
+							style="width: 100px; height: 100px; border-radius: 50px" 
+							/>	
+							<br>
+							
+							<c:out value="${userId }"/>(
+							<a href="mypage.jsp">	
+							  <c:out value="${userName}"/></a>)
+							님 안녕하세요? 
+							<br>
+							
+							<a href="${commonURL}/login/loginFrm.jsp">로그아웃</a>
 						</c:when>
 						<c:otherwise>
 							<a href="login/loginFrm.jsp">로그인</a>
