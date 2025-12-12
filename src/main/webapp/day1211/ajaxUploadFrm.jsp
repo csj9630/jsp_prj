@@ -61,25 +61,6 @@
 		});//click
 		
 		$("#upfile").change(function(evt){
-			/*
-				//업로드 가능 확장자는 gif,jpg,png,bmp만 가능한 체크 코드 작성.
-				var blockExt="gif,jpg,png,bmp".split(",");
-				var file = $("#upfile").val();
-				var ext = file.substring(file.lastIndexOf(".")+1);
-				
-				var flag = false;
-				for (var i = 0; i < blockExt.length; i++) {
-					if(blockExt[i] ==ext){
-						flag = true;
-					}//end if
-				}//end for
-				
-				if(!flag){
-					alert("업로드 가능 확장자는 gif,jpg,png,bmp만 가능합니다 - 현재 : "+ext);
-					return;
-				}//end if
-			*/
-			
 			//미리보기
 			//1. HTML File Control 접근
 			var file = evt.target.files[0]; //input type="file">
@@ -98,9 +79,9 @@
 			
 			//파일이 변경되면 변경된 파일명을 div에 넣는다.
 			$("#selectFile").html($("#upfile").val());
-		});//click
+		});//change
 		
-		
+		//파일 업로드 버튼이 클릭
 		$("#btnUpload").click(function () {
 			if($("#uploader").val() == ""){
 				alert("필수입력");
@@ -111,11 +92,45 @@
 				return;
 			}//end if
 			if($("#upfile").val() == ""){
-				alert("필수입력");
+				alert("파일을 선택해주세요!");
 				return;
 			}//end if
 			
 			$("#frm").submit();
+		})//click
+		
+		$("#btnFileUpload").click(function () {
+			if($("#upfile").val() == ""){
+				alert("파일을 선택해주세요!");
+				return;
+			}//end if
+			
+			//ajax로 파일 업로드
+			var form = $("#frm")[0];
+			//alert(form);
+			var formData = new FormData(form);////파라메터 전송방식 -> binary전송 방식
+			
+			$.ajax({
+				url:"ajaxFileProcess.jsp",
+				type:"post",
+				contentType:false,//ajax의 요청방식을 binary 전송 방식으로 변경
+				processData:false,//ajax요청에 query string 붙지 않게 막기
+				data: formData,//binary전송 방식으로 설정된 form
+				dataType:"JSON",
+				error:function(xhr){
+					alert("파일 전송시 문제 발생했습니다.");
+					console.log(xhr);
+				},
+				success:function(jsonObj){
+					if(jsonObj.resultFlag){//업로드 성공시
+						alert("이미지가 업로드됐습니다.");
+					$("#profile").val(jsonObj.uploadName);
+					}else{
+						alert("이미지 업로드 실패, 그렇게 됐습니다.");
+					}//end else
+				}//success
+			});//ajax
+			
 		})//click
 
 	});//ready
@@ -135,7 +150,7 @@
 				<div class="col-md-7">
 					<!-- 여기서부터 작성 시작-->
 					<h2>AJAX 파일 업로드</h2>
-					<form  id="frm" action="ajaxUploadFrmProcess.jsp"  method="POST" enctype="multipart/form-data" >
+					<form  id="frm" action="ajaxUploadFrmProcess.jsp"  method="POST" >
 						<label>업로더</label>
 						<input type="text" name="uploader" id="uploader"><br />
 						<label>대상연령</label>
@@ -148,12 +163,11 @@
 	   					<img id="preview" alt="이미지 미리보기" src="../common/images/default.png"
 	   					style="width: 100px; height: 100px; border-radius: 50px" 
 	   					/>
-	   					
 	   				    <input type="button" value="파일선택" id="btnFile" class="btn btn-primary"/>
 	   				    <input type="button" value="파일업로드" id="btnFileUpload" class="btn btn-info"/>
 	   				    <div id="selectFile"></div>
-<!-- 						<input type="file" accept=".gif,.jpg,.png,.bmp" name ="upfile" id="upfile" style="display: none"><br />
- -->						<input type="file" accept="image/*" name ="upfile" id="upfile" style="display: none"><br />
+						<input type="file" accept="image/*" name ="upfile" id="upfile" style="display: none"><br />
+	   					<input type="hidden" name="profile" value="profile"/> 
 	   				    <input type="button" value="정보입력" id="btnUpload" class="btn btn-success" />
 					</form>
 

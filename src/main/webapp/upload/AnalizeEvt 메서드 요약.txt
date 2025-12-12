@@ -1,0 +1,23 @@
+team2
+AnalizeEvt
+
+view: AnalizeView
+process: AnalizeProcess 
+updatedResult: String 
+Ip: LoginProcess
+
+strFirst: String
+strLast: String
+filePath: String
+
+AnalizeEvt(AnalizeView, LoginProcess) 
+actionPerformed (ActionEvent) : void 
+
+ getKeyNameAcc() : String
+ getBrowserPerc◊): String 
+ getSuccessFailCnt() : String 
+ getMostRequsetTime(): String 
+ getMost4030): String
+ getMost500ofBooks(): String
+ analizeLineRange(String, String): String 
+ analizeResult(): String

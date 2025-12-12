@@ -91,70 +91,18 @@
 					//POST 한글 인코딩
 					request.setCharacterEncoding("UTF-8");
 
-					// =========== 파일업로드 컴포넌트 사용하여 리퀘스트 받기=============
-					//***1. 업로드된 파일을 저장할 경로를 설정
-					//이런 경로는 siteProperty에 넣고 하자.
-					File saveDir = new File("C:/dev/workspace/jsp_prj/src/main/webapp/upload");
-					if (!saveDir.exists()) {
-						saveDir.mkdirs();
-					} //end if
-
-					//***2. 최대 크기 설정
-					int maxSize = 1024 * 1024 * 10; //10MB로 제한
-
-					//2-1. 업로드 크기 설정
-					int uploadSize = 1024 * 1024 * 600; //600MB로 큼직하게 설정.
-
-					//***3. FileUpload 객체 ( MultipartRequest ) 생성
-					//-> 생성하자마자 mr 객체도 생성되어서 업로드됨
-					MultipartRequest mr = new MultipartRequest(request, saveDir.getAbsolutePath(), uploadSize, "UTF-8",
-							new DefaultFileRenamePolicy());
-
-					//요청 받기
-					String uploader = mr.getParameter("uploader");
-					String[] ageArr = mr.getParameterValues("age");
-					//String fileName = mr.getParameter("upfile");//파일명은 파라메터로 못 받음
-					String originalName = mr.getOriginalFileName("upfile");//원본명
-					String fileSystemName = mr.getFilesystemName("upfile");//변경명
-
 					
-					//2-2.업로드 파일의 크기를 얻어서 업로드 가능 크기와 비교한다.
-					File compareFile = new File(saveDir.getAbsolutePath() + File.separator + fileSystemName);
-
-					//파일이 크다면 사용자에게 에러 메시지를 보여주고 파일을 지운다.
-					//작으면 바로 업로드.
-					boolean flag = false;
-					if (flag = (compareFile.length() > maxSize)) {
-						compareFile.delete();
-					} //end if
-
-					//request로 받은 게 아니니 scope 객체에 직접 넣기
-					pageContext.setAttribute("uploader", uploader);
-					pageContext.setAttribute("ageArr", ageArr);
-					pageContext.setAttribute("originalName", originalName);
-					pageContext.setAttribute("fileSystemName", fileSystemName);
-					pageContext.setAttribute("flag", flag);
 					%>
-					<!--maxSize보다 큰 파일이면 에러를 띄우고  -->
-					<!--아니면 정상 작동한다.-->
-					<c:choose>
-						<c:when test="${flag}">
-							<h5>Error! 파일 사이즈는 최대 10Mbyte 까지입니다.</h5>
-						</c:when>
-						<c:otherwise>
-							업로더 :
-							<c:out value="${uploader }" />
-							<br> 대상층 연령 :
-							<c:forEach var="age" items="${ageArr }">
-								<c:out value="${age }" />
-							</c:forEach>
-							<br> 파일명 :
-							<c:out value="${fileSystemName }" />
-							<br> 원본명 :
-							<c:out value="${originalName }" />
-							<br> <a href="view_img.jsp?img=${ fileSystemName }">이미지 보기</a>
-						</c:otherwise>
-					</c:choose>
+
+					업로더 :
+					<c:out value="${param.uploader }" />
+					<br> 대상층 연령 :
+					<c:forEach var="age" items="${paramValues.age }">
+						<c:out value="${age }" />
+					</c:forEach>
+					<br> 파일명 :
+					<c:out value="${param.profile }" />
+
 				</div>
 
 			</div>
