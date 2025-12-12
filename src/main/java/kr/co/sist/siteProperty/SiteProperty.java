@@ -37,7 +37,7 @@ public class SiteProperty {
 			selectSiteInfo.append(" select protocol,server_name,context_root,manage_path,key,title from site_property ");
 			
 			//**********사이트 세팅 1번 사용******************
-			selectSiteInfo.append("where num =1");
+			selectSiteInfo.append("where num = 1");
 			pstmt = con.prepareStatement(selectSiteInfo.toString());
 			rs = pstmt.executeQuery();
 			
