@@ -1,11 +1,14 @@
 package kr.co.sist.user.member;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import day1128.ParamDTO;
+import kr.co.sist.board.BoardDTO;
 import kr.co.sist.dao.DbConn;
 
 public class WebMemberLoginDAO {
@@ -60,5 +63,7 @@ public class WebMemberLoginDAO {
 		}//end finally
 		return pDTO;
 	}//selectLogin
+	
+	
 	
 }//class

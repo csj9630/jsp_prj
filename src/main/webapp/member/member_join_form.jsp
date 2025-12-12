@@ -114,7 +114,7 @@
 			<div class="row featurette">
 				<div class="col-md-7">
 					${sessionScope.name}
-					
+					여기 아니다 1128 usebaenParamForm ㄱㄱ
 					
 				</div>
 				

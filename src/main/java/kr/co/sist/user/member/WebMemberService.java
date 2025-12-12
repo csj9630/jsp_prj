@@ -4,8 +4,9 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
 import day1128.ParamDTO;
+import kr.co.sist.chipher.DataDecryption;
 import kr.co.sist.chipher.DataEncryption;
-import kr.co.sist.dao.WebMemberDAO;
+import kr.co.sist.siteProperty.SiteProperty;
 
 public class WebMemberService {
 
@@ -105,5 +106,86 @@ public class WebMemberService {
 
 		return flag;
 	}// addMember
+	
+	
+	/**
+	 * 	 * 마이페이지에서 사용될 회원 정보를 조회한다..
+	 * @param id
+	 * @return
+	 */
+	public ParamDTO searchMember(String id) {
+		ParamDTO pDTO = null;
+
+		WebMemberDAO wmDAO = WebMemberDAO.getInstance();
+		String key = SiteProperty.spVO.getKey();//이제 키를 따로 안 받아도 키를 쓸 수 있다
+		System.out.println("------------"+key);
+		
+		try {
+			pDTO = wmDAO.selectMember(id);
+			if(pDTO != null) {
+				//이름과 이메일은 암호화되어 저장되어 있었으니 복호화가 필요하다.
+				DataDecryption dd = new DataDecryption(key);
+				try {
+					pDTO.setName(dd.decrypt(pDTO.getName()));
+					pDTO.setEmail(dd.decrypt(pDTO.getEmail()));
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} // end catch
+		
+		return pDTO;
+	}// searchId
+	
+	
+	/**
+	 * 회원 정보를 수정한다.
+	 * @param pDTO
+	 * @return
+	 */
+	public boolean modifyMember(ParamDTO pDTO){
+		boolean flag = false;
+
+		WebMemberDAO wmDAO = WebMemberDAO.getInstance();
+
+		// 암호화 과정
+		// 근데 DataEncryption 이거 외부클래스를 못 읽어서 문제다.
+		// 이 부분 작성 다 안됨.
+
+		String key = SiteProperty.spVO.getKey();
+		// 저장될 데이터의 중요도에 따라 일방향 헤시, 암호화 처리.
+		// null / "" 들어가면 에러남.
+
+
+	      DataEncryption de=new DataEncryption(key);
+
+	      if(pDTO.getEmail()!=null && !"".equals(pDTO.getEmail())) {
+	         try {
+	            pDTO.setEmail(de.encrypt(pDTO.getEmail()));
+	         } catch (Exception e) {
+	            e.printStackTrace();
+	 		} // end catch
+	      }//end if
+	      	
+
+		try {
+			// 회원 정보 1개 update
+			flag=wmDAO.upDateMember(pDTO)==1;
+		
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} // end catch
+
+		return flag;
+	}// addMember
+
 
 }// class

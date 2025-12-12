@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 
-<title>파일업로드 실습</title>
+<title>AJAX 파일업로드 실습</title>
 <link rel="shortcut icon"
 	href="http://192.168.10.82/jsp_prj/common/images/favicon.ico">
 
@@ -110,6 +110,10 @@
 				alert("필수입력");
 				return;
 			}//end if
+			if($("#upfile").val() == ""){
+				alert("필수입력");
+				return;
+			}//end if
 			
 			$("#frm").submit();
 		})//click
@@ -130,8 +134,8 @@
 			<div class="row featurette">
 				<div class="col-md-7">
 					<!-- 여기서부터 작성 시작-->
-					<h2>파일 업로드</h2>
-					<form  id="frm" action="uploadFrmProcess.jsp"  method="POST" enctype="multipart/form-data" >
+					<h2>AJAX 파일 업로드</h2>
+					<form  id="frm" action="ajaxUploadFrmProcess.jsp"  method="POST" enctype="multipart/form-data" >
 						<label>업로더</label>
 						<input type="text" name="uploader" id="uploader"><br />
 						<label>대상연령</label>
@@ -145,12 +149,12 @@
 	   					style="width: 100px; height: 100px; border-radius: 50px" 
 	   					/>
 	   					
-	   				    <input type="button" value="파일선택" id="btnFile" class="btn btn-success"/>
-	   				    업로드는 이미지만 가능합니다.(jpg, gif, png, bmp)
+	   				    <input type="button" value="파일선택" id="btnFile" class="btn btn-primary"/>
+	   				    <input type="button" value="파일업로드" id="btnFileUpload" class="btn btn-info"/>
 	   				    <div id="selectFile"></div>
 <!-- 						<input type="file" accept=".gif,.jpg,.png,.bmp" name ="upfile" id="upfile" style="display: none"><br />
  -->						<input type="file" accept="image/*" name ="upfile" id="upfile" style="display: none"><br />
-	   				    <input type="button" value="업로드" id="btnUpload" class="btn btn-success" />
+	   				    <input type="button" value="정보입력" id="btnUpload" class="btn btn-success" />
 					</form>
 
 				</div>

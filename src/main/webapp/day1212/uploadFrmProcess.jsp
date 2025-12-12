@@ -117,6 +117,8 @@
 					String originalName = mr.getOriginalFileName("upfile");//원본명
 					String fileSystemName = mr.getFilesystemName("upfile");//변경명
 
+					
+					//System.out.println("****************"+fileSystemName+"***************");
 					//2-2.업로드 파일의 크기를 얻어서 업로드 가능 크기와 비교한다.
 					File compareFile = new File(saveDir.getAbsolutePath() + File.separator + fileSystemName);
 
