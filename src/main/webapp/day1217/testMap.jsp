@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../fragments/siteProperty.jsp"%>    
+    
+<%@ include file="../fragments/siteProperty.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
 <head>
@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 
-<title>사용자 메인페이지</title>
+<title>JSP템플릿</title>
 <link rel="shortcut icon" href="http://192.168.10.82/jsp_prj/common/images/favicon.ico">
 
 <script src="http://192.168.10.82/jsp_prj/common/js/color-modes.js"></script>
@@ -20,9 +20,7 @@
 
 <meta name="theme-color" content="#712cf9">
 <link href="http://192.168.10.82/jsp_prj/common/css/carousel.css" rel="stylesheet">
-<%-- <jsp:include page="../fragments/bootstrap_css.jsp"></jsp:include> --%>
-<jsp:include page="/fragments/bootstrap_css.jsp"></jsp:include>
-
+<jsp:include page="../fragments/bootstrap_css.jsp"></jsp:include>
 <style type="text/css">
 #wrap{  margin: 0px auto; width: 1200px; height: 1000px; }	
 #header{ height: 150px;	 }	
@@ -43,44 +41,16 @@ $(function(){
 </head>
 <body>
 	<header data-bs-theme="dark">
-			<%-- 	<jsp:include page="../fragments/header.jsp"/> --%>
-				<jsp:include page="/fragments/header.jsp"></jsp:include>
+		<jsp:include page="../fragments/header.jsp"/>
 	</header>
 	<main>
-	<jsp:include page="/fragments/carousel.jsp"/>
-
 		<!-- Wrap the rest of the page in another container to center all the content. -->
 		<div class="container marketing">
-			<!-- Three columns of text below the carousel -->
-			<!-- /.row -->
-			<!-- START THE FEATURETTES -->
 			<hr class="featurette-divider">
 			<div class="row featurette">
 				<div class="col-md-7">
-					<h1>사용자 메인 페이지</h1>
-					<h3>사용자에게 제공할 컨텐츠...</h3>
-					<c:choose>
-						<c:when test="${not empty sessionScope.userId }">
-							<img id="preview" alt="이미지 미리보기" src="${commonURL}/upload/${sessionScope.userProfile}"
-							style="width: 100px; height: 100px; border-radius: 50px" 
-							/>	
-							<br>
-							
-							<c:out value="${userId }"/>(
-							<a href="mypage.jsp">	
-							  <c:out value="${userName}"/></a>)
-							님 안녕하세요? 
-							<br>
-							
-							<h3><a href="${commonURL}/mypage/mypage.jsp">마이페이지</a></h3>
-							<a href="${commonURL}/login/loginFrm.jsp">로그아웃</a>
-							<a href="${commonURL}/map/mapList.jsp">등록한 장소 보기</a>
-						</c:when>
-						<c:otherwise>
-							<a href="login/loginFrm.jsp">로그인</a>
-						</c:otherwise>
-					</c:choose>
-					<a href="${commonURL}/board/boardList.jsp">게시판.</a>
+				<!-- 여기서부터 작성 시작-->
+					
 					
 				</div>
 				
@@ -91,13 +61,7 @@ $(function(){
 		<!-- /.container -->
 		<!-- FOOTER -->
 		<footer class="container">
-			<p class="float-end">
-				<a href="#">위로</a>
-			</p>
-			<p>
-				&copy; SIST class2. &middot; <a href="#">개인정보호정책</a>
-				&middot; 개인정보관리 책임자 님이셈
-			</p>
+			<jsp:include page="../fragments/footer.jsp"/>
 		</footer>
 	</main>
 	
