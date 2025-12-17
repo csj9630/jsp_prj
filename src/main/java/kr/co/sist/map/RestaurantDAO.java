@@ -43,7 +43,7 @@ public class RestaurantDAO {
 //			4. 쿼리문 생성 객체 얻기
 			StringBuilder selectRestaurant = new StringBuilder();
 			selectRestaurant
-			.append(" select rest_num, rest_name, menu, info, lat, lng, input_date   ")
+			.append(" select rest_num, rest_name, menu, lat, lng, input_date   ")
 			.append(" from restaurant   ")
 			.append(" where id=?  ");
 			
@@ -60,6 +60,11 @@ public class RestaurantDAO {
 			while (rs.next()) {
 				rDTO = new RestaurantDTO();
 				rDTO.setRest_num(rs.getInt("rest_num"));
+				rDTO.setRest_name(rs.getString("rest_name"));
+				rDTO.setMenu(rs.getString("menu"));
+				rDTO.setLat(rs.getDouble("lat"));
+				rDTO.setLng(rs.getDouble("lng"));
+				rDTO.setInput_date(rs.getDate("input_date"));
 				
 				list.add(rDTO);
 			} // end while
@@ -67,7 +72,7 @@ public class RestaurantDAO {
 		} finally {
 //			7. 연결 끊기
 			dbCon.dbClose(rs, pstmt, con);
-		}
+		}//finally
 		
 		return list;
 	}//selectAllRestaurant
