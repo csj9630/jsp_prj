@@ -37,12 +37,18 @@
 <script type="text/javascript">
 
 $(function(){
-	
+	$("#btnAdd").click(function () {
+		location.href="addMap.jsp";
+	})	
 });//ready
 </script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7a1ac775d203b783184fbffaf6d655b5"></script>
 <script>
-var map 
+var map;
+var markerPosition;
+var maker;
+
+//지각해서 대부분 내용 놓침
 
 window.onload = function () {
 	
@@ -60,7 +66,7 @@ var markerPosition  = new kakao.maps.LatLng(37.50416599371483, 127.05168765413 )
 
 // 마커를 생성합니다
 var marker = new kakao.maps.Marker({
-    position: markerPosition
+    position: marke	rPosition
 });
 
 // 마커가 지도 위에 표시되도록 설정합니다
@@ -73,12 +79,60 @@ marker.setMap(map);
 
 
 function viewRestaurant(lat,lng){
+	
+	var locPosition = new kakao.maps.LatLng(lat, 1ng); //마커가 표시될 위치를 geoloc
+	message = '<div style="padding:5px;">'+msg+'</div>'; //인포윈도우에 표시될 내용
 	//setCenter(lat,lng);
-	panTo(lat,lng);//부드럽게 이동
-	setMarker(lat,lng);
+	//panTo(lat,lng);//부드럽게 이동
+	//setMarker(lat,lng);
 
+	
+		
+	
+	// 마커와 인포윈도우를 표시합니다
+	displayMarker(locPosition,message);
 
 }//viewRestaurant
+
+var infowindow;//전역 변수로 올림
+
+//지도에 마커와 인포윈도우를 표시하는 함수입니다
+function displayMarker(locPosition, message) {
+	
+	marker.setMap(null);
+	
+	if(infowindow != null){
+		infowindow.close();
+	}//end if
+	
+	map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	
+	// 마커를 생성합니다
+	marker = new kakao.maps.Marker({
+		map: map,
+		position: locPosition
+	});
+
+	// 인포윈도우를 마커위에 표시합니다
+	infowindow.open(map, marker);
+	
+	//
+	marker.setMap(map);
+	
+	
+	// 인포윈도우를 생성합니다
+	var infowindow = new kakao.maps.InfoWindow({
+	    position : iwPosition, 
+	    content : iwContent 
+	});
+  
+	// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+	infowindow.open(map, marker);
+	
+}
+
+
+
 
 function setMarker(lat,lng) {
 	// 마커가 표시될 위치입니다 
@@ -123,7 +177,6 @@ function panTo(lat,lng) {
 			<div class="row featurette">
 				<div>
 					<h2>식당 리스트</h2>
-						<div id="map" style="width:500px;height:400px;"></div>
 				</div>
 				<!--  map-------------------------->
 		<%
@@ -136,6 +189,8 @@ function panTo(lat,lng) {
 			//out.print("아이디 : "+id+"<br>");
 			//out.print("list : "+list);
 		%>
+					<input type="button" value="식당등록" class="btn btn-info btn-sm" id="btnAdd">
+						<div id="map" style="width:500px;height:400px;"></div>
 			<table class="table table-hover">
 			<thead>
 				<tr>

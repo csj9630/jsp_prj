@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.simple.JSONObject;
+
 public class RestaurantService {
 	//@formatter:off
 	private static RestaurantService rs;
@@ -17,17 +19,32 @@ public class RestaurantService {
 	// Restaurant
 	public List<RestaurantDTO> searchRestaurant(String id) {
 		List<RestaurantDTO> list = null;
-		
+
 		RestaurantDAO rDAO = RestaurantDAO.getInstance();
-		
+
 		try {
-			list=rDAO.selectAllRestaurant(id);
+			list = rDAO.selectAllRestaurant(id);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}//end catch
+		} // end catch
 
 		return list;
-	}//searchRestaurant
+	}// searchRestaurant
+
+	public String addRestaurant(RestaurantDTO rDTO) {
+		JSONObject jsonObj = new JSONObject();
+		jsonObj.put("resultFlag", false);
+
+		RestaurantDAO rDAO = RestaurantDAO.getInstance();
+		try {
+			rDAO.insertRestaurant(rDTO);
+			jsonObj.put("resultFlag", true);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} // end catch
+
+		return jsonObj.toJSONString();
+	}
 
 }// class

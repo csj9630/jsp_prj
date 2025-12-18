@@ -72,9 +72,9 @@ $(function(){
 							님 안녕하세요? 
 							<br>
 							
-							<h3><a href="${commonURL}/mypage/mypage.jsp">마이페이지</a></h3>
-							<a href="${commonURL}/login/loginFrm.jsp">로그아웃</a>
-							<a href="${commonURL}/map/mapList.jsp">등록한 장소 보기</a>
+							<h3><a href="${commonURL}/mypage/mypage.jsp">마이페이지</a></h3><br>
+							<a href="${commonURL}/login/loginFrm.jsp">로그아웃</a><br>
+							<a href="${commonURL}/map/mapList.jsp">등록한 장소 보기</a><br>
 						</c:when>
 						<c:otherwise>
 							<a href="login/loginFrm.jsp">로그인</a>
