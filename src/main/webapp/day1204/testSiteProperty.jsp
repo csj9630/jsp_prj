@@ -20,7 +20,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
 <meta name="theme-color" content="#712cf9">
-<link href="http://192.168.10.82/jsp_prj/common/css/carousel.css" rel="stylesheet">
+<link href="${commonURL}/common/css/carousel.css" rel="stylesheet">
 <jsp:include page="../fragments/bootstrap_css.jsp"></jsp:include>
 <style type="text/css">
 #wrap{  margin: 0px auto; width: 1200px; height: 1000px; }	

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="shortcut icon" href="http://192.168.10.82/jsp_prj/common/images/favicon2.ico">
+<link rel="shortcut icon" href="${commonURL}/common/images/favicon2.ico">
 <meta charset="UTF-8">
 <title>이터널리턴 지금바로다운로드</title>
 <!-- bootStrap CDN ---------------------->

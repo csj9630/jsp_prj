@@ -17,7 +17,7 @@ request.setCharacterEncoding("UTF-8");
 <title>${SiteProperty.title}</title>
 <link rel="shortcut icon" href="${commonURL}/common/images/favicon.ico">
 
-<script src="http://192.168.10.82/jsp_prj/common/js/color-modes.js"></script>
+<script src="${commonURL}/common/js/color-modes.js"></script>
 <!-- bootstrap CDN 시작 -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -30,7 +30,7 @@ request.setCharacterEncoding("UTF-8");
 	crossorigin="anonymous"></script>
 
 <meta name="theme-color" content="#712cf9">
-<link href="http://192.168.10.82/jsp_prj/common/css/carousel.css"
+<link href="${commonURL}/common/css/carousel.css"
 	rel="stylesheet">
 <jsp:include page="../fragments/bootstrap_css.jsp" />
 <style type="text/css">

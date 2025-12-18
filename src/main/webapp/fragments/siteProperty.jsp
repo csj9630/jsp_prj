@@ -8,4 +8,5 @@
 SitePropertyVO spVO = SiteProperty.spVO;
 application.setAttribute("SiteProperty", spVO);
 application.setAttribute("commonURL",spVO.getProtocol()+spVO.getServer_name()+spVO.getContext_root());
+System.out.println(spVO.getProtocol()+spVO.getServer_name()+spVO.getContext_root());
 %>

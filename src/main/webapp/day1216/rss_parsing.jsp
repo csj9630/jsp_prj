@@ -16,9 +16,9 @@
 
 <title>JSP템플릿</title>
 <link rel="shortcut icon"
-	href="http://192.168.10.82/jsp_prj/common/images/favicon.ico">
+	href="${commonURL}/common/images/favicon.ico">
 
-<script src="http://192.168.10.82/jsp_prj/common/js/color-modes.js"></script>
+<script src="${commonURL}/common/js/color-modes.js"></script>
 <!-- bootstrap CDN 시작 -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -31,7 +31,7 @@
 	crossorigin="anonymous"></script>
 
 <meta name="theme-color" content="#712cf9">
-<link href="http://192.168.10.82/jsp_prj/common/css/carousel.css"
+<link href="${commonURL}/common/css/carousel.css"
 	rel="stylesheet">
 <jsp:include page="../fragments/bootstrap_css.jsp"></jsp:include>
 <style type="text/css">

@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="shortcut icon" href="http://192.168.10.82/jsp_prj/common/images/favicon.ico">
+<link rel="shortcut icon" href="${commonURL}/common/images/favicon.ico">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
@@ -69,7 +69,7 @@ function sendId( id ){
 <body>
 <div id="wrap">
 	<div id="container">
-	<img alt="아이디찾기 이미지" src="http://localhost/jsp_prj/day1202/images/findId.png"/>
+	<img alt="아이디찾기 이미지" src="${commonURL}/day1202/images/findId.png"/>
 	<div id="searchFrm">
 	
 		<form name="popupFrm" action="findId.jsp" method="get">

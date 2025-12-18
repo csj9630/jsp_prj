@@ -9,12 +9,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>로그인</title>
-<link rel="shortcut icon" href="http://192.168.10.82/jsp_prj/common/images/favicon.ico">
+<link rel="shortcut icon" href="${commonURL}/common/images/favicon.ico">
 
 <!-- jQuery CDN 시작 -->
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-<script src="http://192.168.10.82/jsp_prj/common/js/color-modes.js"></script>
+<script src="${commonURL}/common/js/color-modes.js"></script>
 <!-- bootstrap CDN 시작 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
@@ -41,7 +41,7 @@ $(function () {
 
 </script>
 
-<link href="http://192.168.10.82/jsp_prj/common/css/sign-in.css" rel="stylesheet">
+<link href="${commonURL}/common/css/sign-in.css" rel="stylesheet">
 <style>
 .bd-placeholder-img {
    font-size: 1.125rem;
@@ -129,7 +129,7 @@ $(function () {
 
    <main class="form-signin w-100 m-auto">
       <form id="loginFrm" name="loginFrm" action="${commonURL}/login/loginFrmProcess.jsp" method="post">
-         <img class="mb-4" src="http://192.168.10.82/jsp_prj/common/images/sist.png"
+         <img class="mb-4" src="${commonURL}/common/images/sist.png"
             alt="" >
          <h1 class="h3 mb-3 fw-normal">로그인</h1>
          <div class="form-floating">
@@ -146,7 +146,7 @@ $(function () {
       	<!--버튼 비활성화   -->
          <button class="btn btn-primary w-100 py-2" onclick="return false;" type="submit" id="btn">로그인</button>
          <div>
-         	<a href="http://localhost/jsp_prj/day1128/usebeanParamForm.jsp">회원가입</a>
+         	<a href="${commonURL}/day1128/usebeanParamForm.jsp">회원가입</a>
          </div>
       </form>
    </main>

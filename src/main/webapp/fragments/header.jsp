@@ -13,8 +13,8 @@
 				<div class="collapse navbar-collapse" id="navbarCollapse">
 					<ul class="navbar-nav me-auto mb-2 mb-md-0">
 						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="http://localhost/jsp_prj/day1126/use_session_a.jsp">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="http://localhost/jsp_prj/member/member_join_form.jsp">회원가입</a></li>
+							aria-current="page" href="${commonURL}/day1126/use_session_a.jsp">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="${commonURL}/member/member_join_form.jsp">회원가입</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">영화목록</a></li>
 						<li class="nav-item"><a class="nav-link disabled"
 							aria-disabled="true">Disabled</a></li>

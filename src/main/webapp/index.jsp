@@ -11,15 +11,15 @@
 <meta name="description" content="">
 
 <title>사용자 메인페이지</title>
-<link rel="shortcut icon" href="http://192.168.10.82/jsp_prj/common/images/favicon.ico">
+<link rel="shortcut icon" href="${commonURL}/common/images/favicon.ico">
 
-<script src="http://192.168.10.82/jsp_prj/common/js/color-modes.js"></script>
+<script src="${commonURL}/common/js/color-modes.js"></script>
 <!-- bootstrap CDN 시작 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
 <meta name="theme-color" content="#712cf9">
-<link href="http://192.168.10.82/jsp_prj/common/css/carousel.css" rel="stylesheet">
+<link href="${commonURL}/common/css/carousel.css" rel="stylesheet">
 <%-- <jsp:include page="../fragments/bootstrap_css.jsp"></jsp:include> --%>
 <jsp:include page="/fragments/bootstrap_css.jsp"></jsp:include>
 
@@ -59,6 +59,7 @@ $(function(){
 				<div class="col-md-7">
 					<h1>사용자 메인 페이지</h1>
 					<h3>사용자에게 제공할 컨텐츠...</h3>
+					<img id="testImg" alt="이미지 미리보기" src="${commonURL}/common/google.png"/>
 					<c:choose>
 						<c:when test="${not empty sessionScope.userId }">
 							<img id="preview" alt="이미지 미리보기" src="${commonURL}/upload/${sessionScope.userProfile}"

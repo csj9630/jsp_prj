@@ -9,7 +9,7 @@ String sessionId = "";
 if(new Random().nextBoolean()){
 	sessionId = "min";
 }else{//없다면 로그인 페이지로 이동.
-	response.sendRedirect("http://192.168.10.82/jsp_prj/day1120/loginFrm.jsp");
+	response.sendRedirect("${commonURL}/day1120/loginFrm.jsp");
 	return;
 }//end else
 
